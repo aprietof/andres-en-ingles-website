@@ -5,6 +5,8 @@ import axios from 'axios';
 export default class NewsletterSubscribeForm extends React.Component {
   state = {
     email: '',
+    subscribeSuccess: false,
+    subscribeError: false,
   };
 
   handleChange = event => {
@@ -19,12 +21,7 @@ export default class NewsletterSubscribeForm extends React.Component {
     event.preventDefault();
     if (email !== '' && EmailValidator.validate(email)) {
       try {
-        await this.subscribeToNewsletter({ email });
-        if (email) {
-          this.setState({
-            email: '',
-          });
-        }
+        this.callLamba(email);
       } catch (err) {
         console.log(err); //eslint-disable-line
       }
@@ -33,36 +30,30 @@ export default class NewsletterSubscribeForm extends React.Component {
     }
   };
 
-  subscribeToNewsletter = async ({ email }) => {
-    const data = {
-      email_address: email,
-      status: 'subscribed',
-    };
-    const listId = process.env.MAILCHIMP_LIST_ID;
-    const apiKey = process.env.MAILCHIMP_API_KEY;
-    const uri = `https://us18.api.mailchimp.com/3.0/lists/${listId}/members/`;
-    const headers = {
-      'Content-Type': 'application/json;charset=UTF-8',
-      'Access-Control-Allow-Origin': '*',
-      Authorization: `Basic ${Buffer.from(`apikey:${apiKey}`).toString('base64')}`,
-    };
-
-    await axios
-      .post(uri, {
-        headers,
-        data,
-      })
-
+  callLamba = email => {
+    axios
+      .get(`https://dwhruot675.execute-api.us-east-1.amazonaws.com/dev/malchimpSubscribe?email=${email}`)
       .then(response => {
-        console.log(response);
+        if (response.status === 200) {
+          this.setState({
+            email: '',
+            subscribeSuccess: true,
+            subscribeError: false,
+          });
+        }
       })
       .catch(error => {
         console.log(error);
+        this.setState({
+          email: '',
+          subscribeSuccess: false,
+          subscribeError: true,
+        });
       });
   };
 
   render() {
-    const { email } = this.state;
+    const { email, subscribeSuccess, subscribeError } = this.state;
 
     return (
       <div className="mb4 mb0-ns fl w-100 w-50-l">
@@ -78,8 +69,19 @@ export default class NewsletterSubscribeForm extends React.Component {
           <input
             type="submit"
             className="input-reset w-100 w-auto-ns bg-black-80 white f5 pv2 pv3-ns ph4 ba b--black-80 bg-hover-mid-gray"
+            style={{ cursor: 'pointer' }}
           />
         </form>
+        {subscribeSuccess && (
+          <p className="f7 black-70 dib pr3 mb3" style={{ color: 'green' }}>
+            Email succesfully added, Thanks!
+          </p>
+        )}
+        {subscribeError && (
+          <p className="f7 black-70 dib pr3 mb3" style={{ color: 'red' }}>
+            Yikes! there was a problem adding your email, please try again.
+          </p>
+        )}
       </div>
     );
   }

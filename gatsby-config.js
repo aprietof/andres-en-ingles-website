@@ -62,6 +62,13 @@ module.exports = {
     'gatsby-plugin-styled-components',
     `gatsby-plugin-sass`,
     {
+      resolve: `gatsby-plugin-netlify-functions`,
+      options: {
+        functionsSrc: `${__dirname}/src/functions`,
+        functionsOutput: `${__dirname}/functions`,
+      },
+    },
+    {
       resolve: 'gatsby-source-prismic',
       options: {
         repositoryName: 'andreswebsite',
