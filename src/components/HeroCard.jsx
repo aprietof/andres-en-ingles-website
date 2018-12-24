@@ -37,6 +37,10 @@ const Header = styled.header`
   text-align: left;
   padding: 4.5em 6em;
 
+  ${media.tablet`
+    padding: 270px 5em 0;
+  `};
+
   ${media.phone`
     padding: 17em 5em 0;
   `};
