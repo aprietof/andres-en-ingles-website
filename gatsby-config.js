@@ -59,11 +59,12 @@ module.exports = {
   /* Plugins */
   plugins: [
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-emotion',
+    'gatsby-plugin-styled-components',
+    `gatsby-plugin-sass`,
     {
       resolve: 'gatsby-source-prismic',
       options: {
-        repositoryName: 'adrian-prismic-blog',
+        repositoryName: 'andreswebsite',
         accessToken: `${process.env.API_KEY}`,
         linkResolver: () => post => `/${post.uid}`,
         htmlSerializer: () => (type, element, content) => {
@@ -113,12 +114,6 @@ module.exports = {
     },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
-    {
-      resolve: 'gatsby-plugin-typography',
-      options: {
-        pathToConfigModule: 'config/typography.js',
-      },
-    },
     'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-plugin-manifest',

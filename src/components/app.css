@@ -1,0 +1,25 @@
+@import '~antd/dist/antd.css';
+
+/* For demo */
+/* .ant-carousel .slick-slide {
+  text-align: center;
+  height: 160px;
+  line-height: 160px;
+  background: #364d79;
+  overflow: hidden;
+} */
+
+/* .ant-carousel .slick-slide h3 {
+  color: #fff;
+} */
+
+/* you can make up upload button and sample style by using stylesheets */
+/* .ant-upload-select-picture-card i {
+  font-size: 32px;
+  color: #999;
+}
+
+.ant-upload-select-picture-card .ant-upload-text {
+  margin-top: 8px;
+  color: #666;
+} */

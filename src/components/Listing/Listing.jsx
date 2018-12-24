@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+// import styled from 'react-emotion';
 import { ListItem } from 'components/Listing';
 
-const List = styled.ul`
-  margin-top: 4rem;
-  margin-bottom: 4rem;
-  list-style-type: none;
-  margin-left: 0;
-`;
+// const List = styled.ul`
+//   margin-top: 4rem;
+//   margin-bottom: 4rem;
+//   list-style-type: none;
+//   margin-left: 0;
+// `;
 
 export default class Listing extends Component {
   render() {
     const { posts } = this.props;
     return (
-      <List>
+      <ul>
         {posts.map(post => {
           let categories = false;
           if (post.node.data.categories[0].category) {
@@ -22,7 +22,7 @@ export default class Listing extends Component {
           }
           return <ListItem key={post.node.uid} node={post.node} categories={categories} />;
         })}
-      </List>
+      </ul>
     );
   }
 }
