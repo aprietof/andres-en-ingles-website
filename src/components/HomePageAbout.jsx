@@ -15,7 +15,7 @@ export default function HomePageAbout() {
             {/* <span className="db-ns f6 fw7 lh-solid mb3 mb0-m mb4-l">Un Poco Sobre Mi:</span> */}
             <span className="fw9 f6 f1-l db lh-title mb3 mb4-l">“Para crear hay que creer. ”</span>
             <span className="db-l measure-wide">
-              - Soy creador de videos sobre Idiomas, Viajes, Lifestyle y Vlogs en New York. Sígueme en todas mis redes
+              Soy creador de videos sobre Idiomas, Viajes, Lifestyle y Vlogs en New York. Sígueme en todas mis redes
               sociales para que seas parte de esta gran familia, aprendas, estemos en contacto y no te pierdas todas las
               sorpresas que tengo para ti. Gracias por visitarme y te mando un corazon!
             </span>
