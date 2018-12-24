@@ -33,7 +33,8 @@ export default class SEO extends Component {
           const seo = {
             title: title || defaultTitle,
             description: defaultDescription || desc,
-            image: `${siteUrl}${banner || defaultBanner}`,
+            // image: `${siteUrl}${banner || defaultBanner}`,
+            image: defaultBanner,
             url: `${siteUrl}${pathname || '/'}`,
           };
 
@@ -76,7 +77,8 @@ export default class SEO extends Component {
                   name: author,
                   logo: {
                     '@type': 'ImageObject',
-                    url: siteUrl + realPrefix + logo,
+                    // url: siteUrl + realPrefix + logo,
+                    url: logo,
                   },
                 },
                 isPartOf: siteUrl,

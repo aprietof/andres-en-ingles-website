@@ -6,6 +6,7 @@ import HomePageAbout from '../components/HomePageAbout';
 import HomePageVideos from '../components/HomePageVideos';
 import HomePageInstagram from '../components/HomePageInstagram';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO/SEO';
 
 class Index extends Component {
   render() {
@@ -14,6 +15,7 @@ class Index extends Component {
     } = this.props;
     return (
       <React.Fragment>
+        <SEO />
         <HomepageHero homepage={homepage} />
         <HomePageVideos />
         <HomePageAbout />
