@@ -6,7 +6,7 @@ import HomePageAbout from '../components/HomePageAbout';
 import HomePageVideos from '../components/HomePageVideos';
 import HomePageInstagram from '../components/HomePageInstagram';
 import Footer from '../components/Footer';
-import SEO from '../components/SEO/SEO';
+import SEO from '../components/SEO';
 
 class Index extends Component {
   render() {
