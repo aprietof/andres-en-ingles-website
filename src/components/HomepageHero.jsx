@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 import { format } from 'date-fns';
@@ -8,33 +7,29 @@ import media from '../../style-templates/media';
 const backgroundImageSrc =
   'https://res.cloudinary.com/absolutandres/image/upload/fl_progressive/v1545515665/IMG_5471.jpg';
 
-export default function HomepageHero({ homepage }) {
-  const today = format(new Date(), 'DD MMMM, YYYY');
-  return (
-    <Hero background={backgroundImageSrc}>
-      <Overlay className="vh-100 dt w-100 tc bg-dark-gray white cover">
-        <Header className="sans-serif">
-          <div className="">
-            <time className="f6 mb2 dib ttu tracked">
-              <small>{today}</small>
-            </time>
-            <h3 className="f2 f1-m f-headline-l measure-narrow lh-title mv0">
-              <span className="bg-black-90 lh-copy white pa1 tracked-tight">AndrÉs</span>
-              <br />
-              <span className="bg-black-90 lh-copy white pa1 tracked-tight">En InglÉs</span>
-            </h3>
-            <HeroCard />
-          </div>
-        </Header>
-      </Overlay>
-      <Frame />
-    </Hero>
-  );
-}
+export default class HomepageHero extends React.Component {
+  state = {
+    show: false,
+  };
 
-HomepageHero.propTypes = {
-  homepage: PropTypes.object.isRequired,
-};
+  componentDidMount() {
+    this.setState({
+      show: true,
+    });
+  }
+
+  render() {
+    const { show } = this.state;
+    return (
+      <Hero background={backgroundImageSrc}>
+        <Overlay className="vh-100 dt w-100 tc bg-dark-gray white cover">
+          <HeroCard show={show} />
+        </Overlay>
+        <Frame />
+      </Hero>
+    );
+  }
+}
 
 const Hero = styled.div`
   background: ${({ background }) => `url(${background}) center`};
@@ -49,16 +44,6 @@ const Hero = styled.div`
 
   ${media.phone`
     margin-bottom: 2em;
-  `};
-`;
-
-const Header = styled.header`
-  height: 100vh;
-  text-align: left;
-  padding: 4.5em 6em;
-
-  ${media.phone`
-    padding: 17em 5em 0;
   `};
 `;
 
