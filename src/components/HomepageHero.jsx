@@ -1,32 +1,31 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ProgressiveImage from 'react-progressive-bg-image';
-import styled, { keyframes } from 'styled-components';
-import { fadeIn } from 'react-animations';
+import styled from 'styled-components';
+import { format } from 'date-fns';
 import HeroCard from './HeroCard';
 import media from '../../style-templates/media';
 
-const fadeInAnimation = keyframes`${fadeIn}`;
 const backgroundImageSrc =
   'https://res.cloudinary.com/absolutandres/image/upload/fl_progressive/v1545515665/IMG_5471.jpg';
 
 export default function HomepageHero({ homepage }) {
+  const today = format(new Date(), 'DD MMMM, YYYY');
   return (
     <Hero background={backgroundImageSrc}>
       <Overlay className="vh-100 dt w-100 tc bg-dark-gray white cover">
-        {/* <HeroCard /> */}
-        <header className="bg-gold sans-serif">
-          <div className="mw9 center pa4 pt5-ns ph7-l">
+        <Header className="sans-serif">
+          <div className="">
             <time className="f6 mb2 dib ttu tracked">
-              <small>27 July, 2015</small>
+              <small>{today}</small>
             </time>
             <h3 className="f2 f1-m f-headline-l measure-narrow lh-title mv0">
-              <span className="bg-black-90 lh-copy white pa1 tracked-tight">Too many tools and frameworks</span>
+              <span className="bg-black-90 lh-copy white pa1 tracked-tight">AndrÉs</span>
+              <br />
+              <span className="bg-black-90 lh-copy white pa1 tracked-tight">En InglÉs</span>
             </h3>
-            <h4 className="f3 fw1 georgia i">The definitive guide to the javascript tooling landscape in 2015.</h4>
-            <h5 className="f6 ttu tracked black-80">By Adam Morse</h5>
+            <HeroCard />
           </div>
-        </header>
+        </Header>
       </Overlay>
       <Frame />
     </Hero>
@@ -53,39 +52,23 @@ const Hero = styled.div`
   `};
 `;
 
-const HeroTitle = styled.div`
-  width: 400px;
-  height: 400px;
-  background: #000;
-`;
-
-const StyledProgressiveImage = styled(ProgressiveImage)`
-  position: relative;
-  background-size: cover;
-  background-position: center center;
+const Header = styled.header`
   height: 100vh;
-  margin-bottom: 3em;
-
-  ${media.tablet`
-    margin-bottom: 0;
-  `};
+  text-align: left;
+  padding: 4.5em 6em;
 
   ${media.phone`
-    margin-bottom: 2em;
+    padding: 17em 5em 0;
   `};
 `;
 
 const Overlay = styled.div`
   position: absolute;
-  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5));
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8));
   height: 100%;
   top: 0;
   left: 0;
   width: 100%;
-`;
-
-const Title = styled.div`
-  animation: 5s ${fadeInAnimation};
 `;
 
 const Frame = styled.div`
