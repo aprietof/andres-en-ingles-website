@@ -25,7 +25,6 @@
     "gatsby-plugin-lodash": "^3.0.1",
     "gatsby-plugin-manifest": "^2.0.5",
     "gatsby-plugin-netlify": "^2.0.1",
-    "gatsby-plugin-netlify-functions": "^0.0.3",
     "gatsby-plugin-offline": "^2.0.6",
     "gatsby-plugin-react-helmet": "^3.0.0",
     "gatsby-plugin-sass": "^2.0.7",
