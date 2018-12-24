@@ -7,25 +7,39 @@ import HeroCard from './HeroCard';
 import media from '../../style-templates/media';
 
 const fadeInAnimation = keyframes`${fadeIn}`;
+const backgroundImageSrc =
+  'https://res.cloudinary.com/absolutandres/image/upload/fl_progressive/v1545515665/IMG_5471.jpg';
 
 export default function HomepageHero({ homepage }) {
   return (
-    <StyledProgressiveImage
-      src={homepage.data.hero_image.url}
-      placeholder={homepage.data.hero_image.placeholder.url}
-      transition="all 1s linear"
-    >
+    <Hero background={backgroundImageSrc}>
       <Overlay className="vh-100 dt w-100 tc bg-dark-gray white cover">
         <HeroCard />
       </Overlay>
       <Frame />
-    </StyledProgressiveImage>
+    </Hero>
   );
 }
 
 HomepageHero.propTypes = {
   homepage: PropTypes.object.isRequired,
 };
+
+const Hero = styled.div`
+  background: ${({ background }) => `url(${background}) center`};
+  background-size: cover;
+  position: relative;
+  height: 100vh;
+  margin-bottom: 3em;
+
+  ${media.tablet`
+    margin-bottom: 0;
+  `};
+
+  ${media.phone`
+    margin-bottom: 2em;
+  `};
+`;
 
 const HeroTitle = styled.div`
   width: 400px;
