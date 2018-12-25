@@ -49,11 +49,18 @@ const Hero = styled.div`
 
 const Overlay = styled.div`
   position: absolute;
+  display: flex;
+  flex-direction: column;
   background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8));
   height: 100%;
   top: 0;
   left: 0;
   width: 100%;
+  justify-content: flex-end;
+
+  ${media.phone`
+    align-items: flex-end;
+  `};
 `;
 
 const Frame = styled.div`

@@ -33,16 +33,15 @@ HeroCard.propTypes = {
 };
 
 const Header = styled.header`
-  height: 100vh;
   text-align: left;
-  padding: 4.5em 6em;
+  padding: 0 6em 2em;
 
   ${media.tablet`
-    padding: 270px 5em 0;
+    padding: 5em;
   `};
 
   ${media.phone`
-    padding: 17em 5em 0;
+    padding: 4em;
   `};
 `;
 
